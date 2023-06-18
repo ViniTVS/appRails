@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @editora %>
+
+<div>
+  <%= link_to "Edit this editora", edit_editora_path(@editora) %> |
+  <%= link_to "Back to editoras", editoras_path %>
+
+  <%= button_to "Destroy this editora", @editora, method: :delete %>
+</div>

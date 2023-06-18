@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sinopses</h1>
+
+<div id="sinopses">
+  <% @sinopses.each do |sinopse| %>
+    <%= render sinopse %>
+    <p>
+      <%= link_to "Show this sinopse", sinopse %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sinopse", new_sinopse_path %>

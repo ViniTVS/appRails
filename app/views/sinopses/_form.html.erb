@@ -1,0 +1,32 @@
+<%= form_with(model: sinopse) do |form| %>
+  <% if sinopse.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sinopse.errors.count, "error") %> prohibited this sinopse from being saved:</h2>
+
+      <ul>
+        <% sinopse.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :texto, style: "display: block" %>
+    <%= form.text_area :texto %>
+  </div>
+
+  <div>
+    <%= form.label :livro_id, style: "display: block" %>
+    <%= form.text_field :livro_id %>
+  </div>
+
+  <div>
+    <%= form.label :livro_id, style: "display: block" %>
+    <%= form.text_field :livro_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

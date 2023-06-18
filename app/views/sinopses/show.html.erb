@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sinopse %>
+
+<div>
+  <%= link_to "Edit this sinopse", edit_sinopse_path(@sinopse) %> |
+  <%= link_to "Back to sinopses", sinopses_path %>
+
+  <%= button_to "Destroy this sinopse", @sinopse, method: :delete %>
+</div>
