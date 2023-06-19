@@ -1,14 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Autors</h1>
 
-<div id="autors">
+
+
+<h1>Autores</h1>
+
+<%= link_to "Criar autor", new_autor_path, {class: "btn btn-success"} %>
+
+<div id="autors" class="row">
   <% @autors.each do |autor| %>
-    <%= render autor %>
-    <p>
-      <%= link_to "Show this autor", autor %>
-    </p>
+    <div class="col-12 col-md-6 mt-5 px-2">
+      <h3> <%= autor.nome %> </h3>
+
+      <h4> Livos:</h4>
+      <div class="list-group">
+        <% autor.livro.each do |livro| %>
+          <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
+            <%= livro.nome %>
+          </a>
+        <% end %>
+      </div>
+      <%= link_to "Ver autor", autor, {class: "link-primary"} %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New autor", new_autor_path %>
