@@ -22,10 +22,16 @@ class AutorsController < ApplicationController
   # POST /autors or /autors.json
   def create
     @autor = Autor.new(autor_params)
+    params[:autor][:livro_ids].each do |l|
+      @livro = Livro.find_by(id: l)
+      if @livro
+        @autor.livro << @livro
+      end
+    end
 
     respond_to do |format|
       if @autor.save
-        format.html { redirect_to autor_url(@autor), notice: "Autor was successfully created." }
+        format.html { redirect_to autor_url(@autor), notice: "Autor foi criado com sucesso." }
         format.json { render :show, status: :created, location: @autor }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,9 +42,21 @@ class AutorsController < ApplicationController
 
   # PATCH/PUT /autors/1 or /autors/1.json
   def update
+    # remove de todos os livros deste autor
+    @autor.livro.each do |l|
+      @autor.livro.delete(l)
+    end
+    # associa novos livros ao autor
+    params[:autor][:livro_ids].each do |l|
+      @livro = Livro.find_by(id: l)
+      if @livro
+        @autor.livro << @livro
+      end
+    end
+
     respond_to do |format|
       if @autor.update(autor_params)
-        format.html { redirect_to autor_url(@autor), notice: "Autor was successfully updated." }
+        format.html { redirect_to autor_url(@autor), notice: "Autor foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @autor }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +70,7 @@ class AutorsController < ApplicationController
     @autor.destroy
 
     respond_to do |format|
-      format.html { redirect_to autors_url, notice: "Autor was successfully destroyed." }
+      format.html { redirect_to autors_url, notice: "Autor apagado." }
       format.json { head :no_content }
     end
   end

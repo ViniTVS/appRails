@@ -1,7 +1,7 @@
 <%= form_with(model: autor) do |form| %>
   <% if autor.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(autor.errors.count, "error") %> prohibited this autor from being saved:</h2>
+      <h2> Não foi possível atualizar autor pois:</h2>
 
       <ul>
         <% autor.errors.each do |error| %>
@@ -11,12 +11,28 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+  <div class="input-group my-2">
+    <label class="input-group-text" for="<%= :nome %>">Nome</label>
+    <%= form.text_field :nome, {class: "form-control"} %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="input-group my-2">
+    <label class="input-group-text" for="<%= :livro_ids %>">Livros</label>
+    <%= form.select :livro_ids, options_from_collection_for_select(Livro.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select", style: "min-height: 200px;"} %>
   </div>
+
+  <div class="mt-4">
+    <%= form.submit "Salvar autor", class: "btn btn-success" %>
+  </div>
+  <%
+    @ids = Array.new
+    autor.livro.each do |l|
+      @ids.push(l.id.to_s)
+    end
+  %>
+  <script>
+    var array_livros = <%= @ids.to_json.html_safe %>;
+    selecionaInputs(array_livros, 'autor_livro_ids');
+  </script>
+
 <% end %>

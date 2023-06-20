@@ -4,6 +4,7 @@ class Livro < ApplicationRecord
   has_and_belongs_to_many :autor
 
   before_destroy do |livro|
+    livro.sinopse.destroy
     # pega cada livro do autor
     livro.autor.each do |a|
       # e apaga a relação entre livro-autor
@@ -19,7 +20,6 @@ class Livro < ApplicationRecord
   validates :ano, presence: true, numericality: { only_integer: true, less_than_or_equal_to: 2023, greater_than_or_equal_to: -1000 }
   validates :nome, presence: true, length: { minimum: 2, maximum: 500 }
   validates :editora, presence: true
-  validates :autor, presence: true
 
 
   before_validation :corrige_tipos

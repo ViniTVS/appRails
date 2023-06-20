@@ -2,6 +2,8 @@
 
 <h1>Livros</h1>
 
+<%= link_to "Criar livro", new_livro_path, {class: "btn btn-success"} %>
+
 <div id="livros">
   <% @livros.each do |livro| %>
     <%= render livro %>
@@ -11,4 +13,3 @@
   <% end %>
 </div>
 
-<%= link_to "New livro", new_livro_path %>

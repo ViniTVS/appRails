@@ -1,10 +1,10 @@
-<h1>Editing autor</h1>
+<h1>Editar autor</h1>
 
 <%= render "form", autor: @autor %>
 
-<br>
 
-<div>
-  <%= link_to "Show this autor", @autor %> |
-  <%= link_to "Back to autors", autors_path %>
+
+<div class="my-4">
+  <%= link_to "Voltar aos autores", autors_path, {class: "btn btn-primary"} %>
+  <%= link_to "Ver autor", @autor, {class: "btn btn-info"} %>
 </div>

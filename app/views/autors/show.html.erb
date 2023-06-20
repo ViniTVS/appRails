@@ -3,8 +3,11 @@
 <%= render @autor %>
 
 <div>
-  <%= link_to "Edit this autor", edit_autor_path(@autor) %> |
-  <%= link_to "Back to autors", autors_path %>
-
-  <%= button_to "Destroy this autor", @autor, method: :delete %>
+  <div class="d-flex justify-content-between mt-2">
+    <div>
+      <%= link_to "Voltar aos autores", autors_path, {class: "btn btn-primary"} %>
+      <%= link_to "Editar autor", edit_autor_path(@autor), {class: "btn btn-warning "} %>
+    </div>
+    <%= button_to "Apagar autor", @autor, {method: :delete,class: "btn btn-danger"}  %>
+  </div>
 </div>
