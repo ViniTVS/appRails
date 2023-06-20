@@ -25,7 +25,7 @@ class SinopsesController < ApplicationController
 
     respond_to do |format|
       if @sinopse.save
-        format.html { redirect_to sinopse_url(@sinopse), notice: "Sinopse was successfully created." }
+        format.html { redirect_to sinopse_url(@sinopse), notice: "Sinopse foi criada com com sucesso." }
         format.json { render :show, status: :created, location: @sinopse }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SinopsesController < ApplicationController
   def update
     respond_to do |format|
       if @sinopse.update(sinopse_params)
-        format.html { redirect_to sinopse_url(@sinopse), notice: "Sinopse was successfully updated." }
+        format.html { redirect_to sinopse_url(@sinopse), notice: "Sinopse foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @sinopse }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class SinopsesController < ApplicationController
     @sinopse.destroy
 
     respond_to do |format|
-      format.html { redirect_to sinopses_url, notice: "Sinopse was successfully destroyed." }
+      format.html { redirect_to sinopses_url, notice: "Sinopse foi apagada com sucesso." }
       format.json { head :no_content }
     end
   end

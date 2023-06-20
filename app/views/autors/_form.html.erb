@@ -1,7 +1,7 @@
 <%= form_with(model: autor) do |form| %>
   <% if autor.errors.any? %>
     <div style="color: red">
-      <h2> Não foi possível atualizar autor pois:</h2>
+      <h2> Não foi possível salvar autor pois:</h2>
 
       <ul>
         <% autor.errors.each do |error| %>
@@ -16,9 +16,12 @@
     <%= form.text_field :nome, {class: "form-control"} %>
   </div>
 
-  <div class="input-group my-2">
-    <label class="input-group-text" for="<%= :livro_ids %>">Livros</label>
-    <%= form.select :livro_ids, options_from_collection_for_select(Livro.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select", style: "min-height: 200px;"} %>
+  <div class="my-2">
+    <div class="input-group">
+      <label class="input-group-text" for="<%= :livro_ids %>">Livros</label>
+      <%= form.select :livro_ids, options_from_collection_for_select(Livro.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select", style: "min-height: 200px;"} %>
+    </div>
+    <span>Você pode selecionar múltiplas opções com Ctrl + clique do mouse</span>
   </div>
 
   <div class="mt-4">

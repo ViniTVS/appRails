@@ -2,21 +2,21 @@
 
 <h1>Autores</h1>
 
-<%= link_to "Criar autor", new_autor_path, {class: "btn btn-success"} %>
-
-<div id="autors" class="row mb-5">
+<div id="autors" class="row">
   <% @autors.each do |autor| %>
     <div class="col-12 col-md-6 mt-4 px-3 d-flex flex-column justify-content-between">
       <div>
         <h3> <%= autor.nome %> </h3>
         <!-- lista livros do autor -->
-        <h4> Livros:</h4>
-        <div class="list-group">
-          <% autor.livro.each do |livro| %>
-            <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
-              <%= livro.nome %>
-            </a>
-          <% end %>
+        <div class=" d-flex ">
+          <strong> Livros:</strong>
+          <div class="list-group flex-fill">
+            <% autor.livro.each do |livro| %>
+              <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
+                <%= livro.nome %>
+              </a>
+            <% end %>
+          </div>
         </div>
       </div>
       <!-- botão para visualizar dados autor -->
@@ -26,3 +26,5 @@
     </div>
   <% end %>
 </div>
+
+<%= link_to "Criar autor", new_autor_path, {class: "btn btn-success my-4"} %>

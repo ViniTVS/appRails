@@ -1,7 +1,7 @@
 <%= form_with(model: editora) do |form| %>
   <% if editora.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(editora.errors.count, "error") %> prohibited this editora from being saved:</h2>
+      <h2>Não foi possível salvar editora pois:</h2>
 
       <ul>
         <% editora.errors.each do |error| %>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+  <div class="input-group my-2">
+    <label class="input-group-text" for="<%= :nome %>">Nome</label>
+    <%= form.text_field :nome, {class: "form-control"} %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Salvar editora", class: "btn btn-success mt-4"  %>
   </div>
 <% end %>

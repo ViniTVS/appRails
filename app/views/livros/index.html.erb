@@ -2,14 +2,22 @@
 
 <h1>Livros</h1>
 
-<%= link_to "Criar livro", new_livro_path, {class: "btn btn-success"} %>
 
-<div id="livros">
+<div id="livros" class="row">
   <% @livros.each do |livro| %>
-    <%= render livro %>
-    <p>
-      <%= link_to "Show this livro", livro %>
-    </p>
+    <div class="col-12 col-md-6 mt-4 px-3 d-flex flex-column justify-content-between">
+      <div>
+        <h3> <%= livro.nome %> </h3>
+<p>
+        <strong> Ano: </strong> <%= livro.ano %>
+</p>
+        <!-- lista livros do autor -->
+        <h5> Livros:</h5>
+      </div>
+      <!-- botão para visualizar dados autor -->
+    </div>
   <% end %>
 </div>
 
+
+<%= link_to "Criar livro", new_livro_path, {class: "btn btn-success my-4"} %>

@@ -2,13 +2,27 @@
 
 <h1>Editoras</h1>
 
-<div id="editoras">
+<div id="editoras" class="row">
   <% @editoras.each do |editora| %>
-    <%= render editora %>
-    <p>
-      <%= link_to "Show this editora", editora %>
-    </p>
+    <div class="col-12 col-md-6 mt-4 px-3 d-flex flex-column justify-content-between">
+      <div>
+        <h3> <%= editora.nome %> </h3>
+        <!-- lista livros do autor -->
+        <h4> Livros:</h4>
+        <div class="list-group">
+          <% editora.livro.each do |livro| %>
+            <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
+              <%= livro.nome %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+      <!-- botão para visualizar dados autor -->
+      <div class="d-flex justify-content-end mt-2">
+      <%= link_to "Ver editora", editora, {class: "btn btn-info"} %>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New editora", new_editora_path %>
+<%= link_to "Criar editora", new_editora_path, {class: "btn btn-success my-4"} %>

@@ -17,7 +17,7 @@ class EditorasTest < ApplicationSystemTestCase
     fill_in "Nome", with: @editora.nome
     click_on "Create Editora"
 
-    assert_text "Editora was successfully created"
+    assert_text "Editora foi criada com com sucesso"
     click_on "Back"
   end
 
@@ -28,7 +28,7 @@ class EditorasTest < ApplicationSystemTestCase
     fill_in "Nome", with: @editora.nome
     click_on "Update Editora"
 
-    assert_text "Editora was successfully updated"
+    assert_text "Editora foi atualizada com sucesso"
     click_on "Back"
   end
 
@@ -36,6 +36,6 @@ class EditorasTest < ApplicationSystemTestCase
     visit editora_url(@editora)
     click_on "Destroy this editora", match: :first
 
-    assert_text "Editora was successfully destroyed"
+    assert_text "Editora foi apagada com sucesso"
   end
 end

@@ -17,7 +17,7 @@ class AutorsTest < ApplicationSystemTestCase
     fill_in "Nome", with: @autor.nome
     click_on "Create Autor"
 
-    assert_text "Autor was successfully created"
+    assert_text "Autor foi criada com com sucesso"
     click_on "Back"
   end
 
@@ -28,7 +28,7 @@ class AutorsTest < ApplicationSystemTestCase
     fill_in "Nome", with: @autor.nome
     click_on "Update Autor"
 
-    assert_text "Autor was successfully updated"
+    assert_text "Autor foi atualizada com sucesso"
     click_on "Back"
   end
 
@@ -36,6 +36,6 @@ class AutorsTest < ApplicationSystemTestCase
     visit autor_url(@autor)
     click_on "Destroy this autor", match: :first
 
-    assert_text "Autor was successfully destroyed"
+    assert_text "Autor foi apagada com sucesso"
   end
 end

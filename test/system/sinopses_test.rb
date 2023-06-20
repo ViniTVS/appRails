@@ -18,7 +18,7 @@ class SinopsesTest < ApplicationSystemTestCase
     fill_in "Texto", with: @sinopse.texto
     click_on "Create Sinopse"
 
-    assert_text "Sinopse was successfully created"
+    assert_text "Sinopse foi criada com com sucesso"
     click_on "Back"
   end
 
@@ -30,7 +30,7 @@ class SinopsesTest < ApplicationSystemTestCase
     fill_in "Texto", with: @sinopse.texto
     click_on "Update Sinopse"
 
-    assert_text "Sinopse was successfully updated"
+    assert_text "Sinopse foi atualizada com sucesso"
     click_on "Back"
   end
 
@@ -38,6 +38,6 @@ class SinopsesTest < ApplicationSystemTestCase
     visit sinopse_url(@sinopse)
     click_on "Destroy this sinopse", match: :first
 
-    assert_text "Sinopse was successfully destroyed"
+    assert_text "Sinopse foi apagada com sucesso"
   end
 end

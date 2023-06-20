@@ -25,7 +25,7 @@ class EditorasController < ApplicationController
 
     respond_to do |format|
       if @editora.save
-        format.html { redirect_to editora_url(@editora), notice: "Editora was successfully created." }
+        format.html { redirect_to editora_url(@editora), notice: "Editora foi criada com com sucesso." }
         format.json { render :show, status: :created, location: @editora }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class EditorasController < ApplicationController
   def update
     respond_to do |format|
       if @editora.update(editora_params)
-        format.html { redirect_to editora_url(@editora), notice: "Editora was successfully updated." }
+        format.html { redirect_to editora_url(@editora), notice: "Editora foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @editora }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class EditorasController < ApplicationController
     @editora.destroy
 
     respond_to do |format|
-      format.html { redirect_to editoras_url, notice: "Editora was successfully destroyed." }
+      format.html { redirect_to editoras_url, notice: "Editora foi apagada com sucesso." }
       format.json { head :no_content }
     end
   end

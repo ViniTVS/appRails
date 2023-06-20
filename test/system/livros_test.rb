@@ -19,7 +19,7 @@ class LivrosTest < ApplicationSystemTestCase
     fill_in "Nome", with: @livro.nome
     click_on "Create Livro"
 
-    assert_text "Livro was successfully created"
+    assert_text "Livro foi criada com com sucesso"
     click_on "Back"
   end
 
@@ -32,7 +32,7 @@ class LivrosTest < ApplicationSystemTestCase
     fill_in "Nome", with: @livro.nome
     click_on "Update Livro"
 
-    assert_text "Livro was successfully updated"
+    assert_text "Livro foi atualizada com sucesso"
     click_on "Back"
   end
 
@@ -40,6 +40,6 @@ class LivrosTest < ApplicationSystemTestCase
     visit livro_url(@livro)
     click_on "Destroy this livro", match: :first
 
-    assert_text "Livro was successfully destroyed"
+    assert_text "Livro foi apagada com sucesso"
   end
 end
