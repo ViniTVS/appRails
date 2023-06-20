@@ -7,26 +7,36 @@
         <% livro.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
+          <li><%= livro.autor_ids.join(" ") %></li>
+
       </ul>
     </div>
   <% end %>
 
   <div>
     <%= form.label :ano, style: "display: block" %>
-    <%= form.number_field :ano %>
+    <%= form.number_field :ano, in: -1000..2023, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+    <%= form.text_field :nome, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :editora_id, style: "display: block" %>
-    <%= form.text_field :editora_id %>
+    <%= form.collection_select :editora_id, Editora.order(:nome), :id, :nome, {include_blank: true}, prompt: true, class: "form-select" %>
   </div>
 
+
   <div>
-    <%= form.submit %>
+    <%= form.label "Autores", style: "display: block" %>
+
+    <%= form.select :autor_ids, options_from_collection_for_select(Autor.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select"} %>
+  </div>
+
+
+  <div style="margin-top:5vh;">
+    <%= form.submit "Criar livro", class: 'btn btn-primary' %>
   </div>
 <% end %>

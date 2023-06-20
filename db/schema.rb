@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_210740) do
   create_table "autors_livros", id: false, force: :cascade do |t|
     t.integer "autor_id", null: false
     t.integer "livro_id", null: false
+    t.index ["autor_id"], name: "index_autors_livros_on_autor_id"
+    t.index ["livro_id"], name: "index_autors_livros_on_livro_id"
   end
 
   create_table "editoras", force: :cascade do |t|

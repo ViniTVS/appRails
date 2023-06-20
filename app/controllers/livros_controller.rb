@@ -22,6 +22,12 @@ class LivrosController < ApplicationController
   # POST /livros or /livros.json
   def create
     @livro = Livro.new(livro_params)
+    params[:livro][:autor_ids].each do |a|
+      @autor = Autor.find_by(id: a)
+      if @autor
+        @livro.autor << @autor
+      end
+    end
 
     respond_to do |format|
       if @livro.save
