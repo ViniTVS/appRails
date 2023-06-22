@@ -13,9 +13,15 @@
 
         <strong> Ano: </strong> <%= livro.ano %>
         <br>
+        <strong> Editora: </strong> <%= link_to livro.editora.nome, livro.editora %>
+        <br>
         <!-- lista autores -->
         <strong> Autor(es): </strong>
-        <%= sanitize livro.autor.map{|a| link_to(a.nome, livro)}.join(", ") %>
+        <% if livro.autor.length() > 0 %>
+          <%= sanitize livro.autor.map{|a| link_to(a.nome, livro)}.join(", ") %>
+        <% else %>
+          Não possui
+        <% end %>
         <!-- Sinopse -->
         <div class="accordion mt-1" id="accordionExample">
           <div class="accordion-item">

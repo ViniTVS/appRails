@@ -26,14 +26,8 @@
     <%= form.submit "Salvar autor", class: "btn btn-success" %>
   </div>
 
-  <%
-    @ids = Array.new
-    autor.livro.each do |l|
-      @ids.push(l.id.to_s)
-    end
-  %>
   <script>
-    var array_livros = <%= @ids.to_json.html_safe %>;
+    var array_livros = <%= autor.livro.map{|l| l.id.to_s}.to_json.html_safe %>;
     selecionaInputs(array_livros, 'autor_livro_ids');
   </script>
 

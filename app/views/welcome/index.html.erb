@@ -1,5 +1,4 @@
 <% @title="Aplicação Rails" %>
-
 <h1> Trabalho 5: Aplicação Rails </h1>
 <p>
   Este é um trabalho da disciplina de
@@ -47,3 +46,137 @@ O trabalho deve ser uma aplicação (qualquer uma) que atenda às seguintes rest
     Forma de Entrega: email indicando sua conta na litorina, assim como o diretório do trabalho. Aqueles que precisarem apresentar em notebook devem marcar horário comigo com pelo mee antecedência.
   </li>
 </ul>
+<h2>Trabalho feito</h2>
+<p>
+  <h3>Banco de dados</h3>
+  Foi utilizado como base o mesmo esquema de banco de dados do <a href="https://www.inf.ufpr.br/vtvs18/banco_de_dados.html" target="_blank" rel="noreferrer">Trabalho 2</a>.
+  <br>
+  Cada tabela foi criada no Active Record com os seguintes campos:
+  <h4 id="livro">Livro</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Restrições</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ano</td>
+        <td>Integer</td>
+        <td>obrigatório, valor entre -1000 e 2023</td>
+      </tr>
+      <tr>
+        <td>nome</td>
+        <td>String</td>
+        <td>obrigatório, tamanho entre 2 e 500 caracteres</td>
+      </tr>
+      <tr>
+        <td>editora</td>
+        <td>has_one Editora</td>
+        <td>obrigatório</td>
+      </tr>
+      <tr>
+        <td>sinopse</td>
+        <td>has_one Sinopse</td>
+        <td>obrigatório</td>
+      </tr>
+      <tr>
+        <td>autor</td>
+        <td>has_and_belongs_to_many Autor</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Caso um livro seja excluído, todos os autores que não tenham relação com outro livro deve ser excluído,
+    assim como a sinopse relacionada ao livro.</p>
+  <h4 id="editora">Editora</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Restrições</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>nome</td>
+        <td>String</td>
+        <td>obrigatório, tamanho entre 2 e 500, único</td>
+      </tr>
+      <tr>
+        <td>livro</td>
+        <td>has_many Livro</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Caso seja excluída uma editora, todos os livros relacionados a ela devem também ser excluídos.</p>
+  <h4 id="autor">Autor</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Restrições</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>nome</td>
+        <td>String</td>
+        <td>obrigatório, tamanho entre 2 e 500 caracteres, único</td>
+      </tr>
+      <tr>
+        <td>livro</td>
+        <td>has_and_belongs_to_many Livro</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 id="sinopse">Sinopse</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Restrições</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>texto</td>
+        <td>Text</td>
+        <td>obrigatório, tamanho entre 20 e 2000 caracteres, único</td>
+      </tr>
+      <tr>
+        <td>livro</td>
+        <td>belongs_to Livro</td>
+        <td>obrigatório, único</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Testes</h3>
+  <p>
+    Não foi criado script de testes.
+  </p>
+  <h3>Uso de CSS e JavaScript</h3>
+  <p>
+    Não consegui utilizar o pacote de Bootstrap com Bootswatch a partir da instalação com yarn ou
+    com a instalação no Gemfiles, então simplesmente os importei no header do site. <br>
+    Não vi grande necessidade para utilizar JavaScript neste trabalho (além do padrão utilizado no Bootstrap),
+    mas o utilizei para selecionar selecionar automaticamente ao editar entradas com campos de múltiplas seleções.
+    Ambas as partes podem ser encontradas no arquivo application.html.erb.
+  </p>
+  <h3>Execução</h3>
+  <p>
+    O trabalho foi feito com Ruby na versão 3.0.2 e Rails versão 7.0.5. <br>
+    O servidor pode ser "levantado" com o comando <br> <code>rails s</code> <br>Caso o banco de dados não esteja populado, é
+    possível o reiniciar e atribuir os dados de exemplo com <br><code>rake db:drop && rake db:migrate && rake db:seed</code>
+  </p>
+</p>
+
+
