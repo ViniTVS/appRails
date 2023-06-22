@@ -1,8 +1,7 @@
-<h1>Criar autor</h1>
+<% @title="Criar autor" %>
+<h1><%= @title %></h1>
 
 <%= render "form", autor: @autor %>
-
-<br>
 
 <div>
   <%= link_to "Voltar aos autores", autors_path, {class: "btn btn-primary"} %>

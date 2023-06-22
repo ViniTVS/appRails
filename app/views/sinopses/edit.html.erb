@@ -1,10 +1,11 @@
-<h1>Editar sinopse</h1>
+<% @title="Editar sinopse" %>
+<h1><%= @title %></h1>
+
+
 
 <%= render "form", sinopse: @sinopse %>
 
-<br>
-
 <div>
-  <%= link_to "Show this sinopse", @sinopse %> |
-  <%= link_to "Back to sinopses", sinopses_path %>
+  <%= link_to "Voltar às sinopses", sinopses_path, {class: "btn btn-primary"} %>
+  <%= link_to "Ver sinopse", @sinopse, {class: "btn btn-info"} %>
 </div>

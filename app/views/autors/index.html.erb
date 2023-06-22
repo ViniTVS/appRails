@@ -1,6 +1,8 @@
+<% @title="Autores" %>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Autores</h1>
+<h1><%= @title %></h1>
 
 <div id="autors" class="row">
   <% @autors.each do |autor| %>
@@ -8,15 +10,13 @@
       <div>
         <h3> <%= autor.nome %> </h3>
         <!-- lista livros do autor -->
-        <div class=" d-flex ">
-          <strong> Livros:</strong>
-          <div class="list-group flex-fill">
-            <% autor.livro.each do |livro| %>
-              <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
-                <%= livro.nome %>
-              </a>
-            <% end %>
-          </div>
+        <strong> Livros:</strong>
+        <div class="list-group flex-fill">
+          <% autor.livro.each do |livro| %>
+            <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
+              <%= livro.nome %>
+            </a>
+          <% end %>
         </div>
       </div>
       <!-- botão para visualizar dados autor -->

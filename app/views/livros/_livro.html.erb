@@ -1,17 +1,17 @@
+<% @title=livro.nome %>
+<h1><%= @title %></h1>
+
+
 <div id="<%= dom_id livro %>">
   <p>
-    <strong>Ano:</strong>
-    <%= livro.ano %>
+    <strong> Ano: </strong> <%= livro.ano %>
+    <br>
+    <strong> Autor(es): </strong>
+    <%= sanitize livro.autor.map{|a| link_to(a.nome, livro)}.join(", ") %>
+    <br>
+    <strong> Editora: </strong> <%= link_to livro.editora.nome, livro.editora %>
+    <br>
+    <strong> Sinopse: </strong> <%= livro.sinopse.texto %>
   </p>
-
-  <p>
-    <strong>Nome:</strong>
-    <%= livro.nome %>
-  </p>
-
-  <p>
-    <strong>Editora:</strong>
-    <%= livro.editora_id %>
-  </p>
-
 </div>
+

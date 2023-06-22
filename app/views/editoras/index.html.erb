@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Editoras</h1>
+<% @title="Editoras" %>
+<h1><%= @title %></h1>
+
 
 <div id="editoras" class="row">
   <% @editoras.each do |editora| %>
@@ -8,7 +10,7 @@
       <div>
         <h3> <%= editora.nome %> </h3>
         <!-- lista livros do autor -->
-        <h4> Livros:</h4>
+        <strong> Livros:</strong>
         <div class="list-group">
           <% editora.livro.each do |livro| %>
             <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">
@@ -17,7 +19,7 @@
           <% end %>
         </div>
       </div>
-      <!-- botão para visualizar dados autor -->
+      <!-- botão para visualizar dados -->
       <div class="d-flex justify-content-end mt-2">
       <%= link_to "Ver editora", editora, {class: "btn btn-info"} %>
       </div>

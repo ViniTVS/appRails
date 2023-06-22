@@ -1,10 +1,11 @@
-<h1>Editar livro</h1>
+<% @title="Editar livro" %>
+<h1><%= @title %></h1>
+
+
 
 <%= render "form", livro: @livro %>
 
-<br>
-
-<div>
-  <%= link_to "Show this livro", @livro %> |
-  <%= link_to "Back to livros", livros_path %>
+<div class="my-4">
+  <%= link_to "Voltar a livros", livros_path, {class: "btn btn-primary"} %>
+  <%= link_to "Ver livro", @livro, {class: "btn btn-info"} %>
 </div>

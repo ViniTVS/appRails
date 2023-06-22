@@ -1,17 +1,13 @@
+<% @title="Sinopse - #{sinopse.livro.nome}" %>
+<h1><%= @title %></h1>
+
+
 <div id="<%= dom_id sinopse %>">
+  <p>
+    <strong>Livro:</strong> <%= link_to sinopse.livro.nome, sinopse.livro %>
+  </p>
   <p>
     <strong>Texto:</strong>
     <%= sinopse.texto %>
   </p>
-
-  <p>
-    <strong>Livro:</strong>
-    <%= sinopse.livro_id %>
-  </p>
-
-  <p>
-    <strong>Livro:</strong>
-    <%= sinopse.livro_id %>
-  </p>
-
 </div>

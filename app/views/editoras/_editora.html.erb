@@ -1,7 +1,9 @@
+<% @title=editora.nome %>
+
 <div id="<%= dom_id editora %>">
   <p>
-    <h1> <%= editora.nome %> </h1>
-    <h2> Livros </h2>
+    <h1><%= @title %></h1>
+    <strong> Livros: </strong>
     <div class="list-group">
       <% editora.livro.each do |livro| %>
         <a href="<%= livro_path(livro.id) %>" class="list-group-item list-group-item-action">

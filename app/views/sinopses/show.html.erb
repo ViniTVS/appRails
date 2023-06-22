@@ -2,9 +2,10 @@
 
 <%= render @sinopse %>
 
-<div>
-  <%= link_to "Edit this sinopse", edit_sinopse_path(@sinopse) %> |
-  <%= link_to "Back to sinopses", sinopses_path %>
-
-  <%= button_to "Destroy this sinopse", @sinopse, method: :delete %>
+<div class="d-flex justify-content-between mt-2">
+  <div>
+    <%= link_to "Voltar às sinopses", sinopses_path, {class: "btn btn-primary"} %>
+    <%= link_to "Editar sinopse", edit_sinopse_path(@sinopse), {class: "btn btn-warning "} %>
+  </div>
+  <%= button_to "Apagar sinopse", @sinopse, {method: :delete,class: "btn btn-danger"}  %>
 </div>

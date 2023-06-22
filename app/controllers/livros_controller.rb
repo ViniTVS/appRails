@@ -42,6 +42,19 @@ class LivrosController < ApplicationController
 
   # PATCH/PUT /livros/1 or /livros/1.json
   def update
+    Sinopse.update(params[:livro][:sinopse_id].to_i, texto: params[:livro][:texto_sinopse])
+
+    @livro.autor.each do |a|
+      @livro.autor.delete(a)
+    end
+
+    params[:livro][:autor_ids].each do |a|
+      @autor = Autor.find_by(id: a)
+      if @autor
+        @livro.autor << @autor
+      end
+    end
+
     respond_to do |format|
       if @livro.update(livro_params)
         format.html { redirect_to livro_url(@livro), notice: "Livro foi atualizado com sucesso." }

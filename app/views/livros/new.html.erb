@@ -1,9 +1,9 @@
-<h1>Novo livro</h1>
+<% @title="Novo livro" %>
+<h1><%= @title %></h1>
+
 
 <%= render "form", livro: @livro %>
 
-<br>
-
 <div>
-  <%= link_to "Back to livros", livros_path %>
+  <%= link_to "Voltar a livros", livros_path, {class: "btn btn-primary mb-4"} %>
 </div>

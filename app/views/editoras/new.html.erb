@@ -1,7 +1,10 @@
-<h1>Criar editora</h1>
+<% @title="Criar editora" %>
+<h1><%= @title %></h1>
+
+
 
 <%= render "form", editora: @editora %>
 
 <div>
-  <%= link_to "Voltar às editoras", editoras_path, {class: "btn btn-primary my-4"} %>
+  <%= link_to "Voltar às editoras", editoras_path, {class: "btn btn-primary "} %>
 </div>

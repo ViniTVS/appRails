@@ -28,15 +28,27 @@
     <%= form.collection_select :editora_id, Editora.order(:nome), :id, :nome, {include_blank: true}, prompt: true, class: "form-select" %>
   </div>
 
+  <div>
+    <%= form.label :texto_sinopse, style: "display: block" %>
+    <%= form.text_area :texto_sinopse, {class: "form-control", value: livro.sinopse.texto, minlength: 20 , maxlength: 2000, rows: "4"} %>
+  </div>
+  <%= hidden_field(:livro, :sinopse_id, {:value => livro.sinopse.id})%>
 
   <div>
     <%= form.label "Autores", style: "display: block" %>
 
     <%= form.select :autor_ids, options_from_collection_for_select(Autor.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select"} %>
+    <span style="font-size: 0.75rem">Você pode selecionar múltiplas opções com Ctrl + clique do mouse</span>
   </div>
 
 
-  <div style="margin-top:5vh;">
-    <%= form.submit "Criar livro", class: 'btn btn-primary' %>
+  <div class="my-4">
+    <%= form.submit "Salvar livro", class: 'btn btn-success' %>
   </div>
+
+
+  <script>
+    var array_livros = <%= livro.autor.map{|a| a.id.to_s}.to_json.html_safe %>;
+    selecionaInputs(array_livros, 'livro_autor_ids');
+  </script>
 <% end %>

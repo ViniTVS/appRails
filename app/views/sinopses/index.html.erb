@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Sinopses</h1>
+<% @title="Sinopses" %>
+<h1><%= @title %></h1>
 
 <div id="sinopses">
   <% @sinopses.each do |sinopse| %>
-    <%= render sinopse %>
-    <p>
-      <%= link_to "Show this sinopse", sinopse %>
-    </p>
+    <div class="col-12  mt-4 px-3 d-flex flex-column justify-content-between">
+      <div>
+        <h3> <%= sinopse.livro.nome %> </h3>
+        <strong>Texto:</strong>
+        <%= sinopse.texto %>
+      </div>
+      <!-- botão para visualizar dados -->
+      <div class="d-flex justify-content-end mt-2">
+      <%= link_to "Ver sinopse", sinopse, {class: "btn btn-info"} %>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New sinopse", new_sinopse_path %>
+
+Sinopses são criadas ao criar livros, então <%= link_to "Clique aqui para criar um livro", new_livro_path, {class: "btn btn-success my-4"} %>

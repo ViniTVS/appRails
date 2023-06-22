@@ -11,22 +11,21 @@
     </div>
   <% end %>
 
-  <div class="input-group my-2">
-    <label class="input-group-text" for="<%= :nome %>">Nome</label>
+  <div>
+    <%= form.label :nome, style: "display: block" %>
     <%= form.text_field :nome, {class: "form-control"} %>
   </div>
 
-  <div class="my-2">
-    <div class="input-group">
-      <label class="input-group-text" for="<%= :livro_ids %>">Livros</label>
-      <%= form.select :livro_ids, options_from_collection_for_select(Livro.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select", style: "min-height: 200px;"} %>
-    </div>
-    <span>Você pode selecionar múltiplas opções com Ctrl + clique do mouse</span>
+  <div>
+    <%= form.label "Livros", style: "display: block" %>
+    <%= form.select :livro_ids, options_from_collection_for_select(Livro.order(:nome), :id, :nome), {:prompt => false}, {multiple: true, class: "form-select", style: "min-height: 200px;"} %>
+    <span style="font-size: 0.75rem">Você pode selecionar múltiplas opções com Ctrl + clique do mouse</span>
   </div>
 
-  <div class="mt-4">
+  <div class="my-4">
     <%= form.submit "Salvar autor", class: "btn btn-success" %>
   </div>
+
   <%
     @ids = Array.new
     autor.livro.each do |l|
