@@ -29,6 +29,9 @@ class LivrosController < ApplicationController
       end
     end
 
+    @s = Sinopse.new({ :texto => params[:livro][:texto_sinopse] })
+    @livro.sinopse = @s
+
     respond_to do |format|
       if @livro.save
         format.html { redirect_to livro_url(@livro), notice: "Livro foi criado com com sucesso." }

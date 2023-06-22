@@ -30,9 +30,9 @@
 
   <div>
     <%= form.label :texto_sinopse, style: "display: block" %>
-    <%= form.text_area :texto_sinopse, {class: "form-control", value: livro.sinopse.texto, minlength: 20 , maxlength: 2000, rows: "4"} %>
+    <%= form.text_area :texto_sinopse, {class: "form-control", value: livro.sinopse ? livro.sinopse.texto : "", minlength: 20 , maxlength: 2000, rows: "4"} %>
   </div>
-  <%= hidden_field(:livro, :sinopse_id, {:value => livro.sinopse.id})%>
+  <%= hidden_field(:livro, :sinopse_id, {:value => livro.sinopse ? livro.sinopse.id : ""})%>
 
   <div>
     <%= form.label "Autores", style: "display: block" %>
